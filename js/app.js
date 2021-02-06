@@ -18,7 +18,7 @@ const displayMeal = meals =>{
         const mealInfo =`
             <div  onClick="displayMealDetails('${meal.idMeal}')">
             <img src="${meal.strMealThumb}">
-            <h2>${meal.strMeal}</h2>
+            <h2 class="mealTitle">${meal.strMeal}</h2>
             </div>
         `
         mealDiv.innerHTML = mealInfo;
@@ -49,15 +49,20 @@ const renderMealDetailsInfo = meal =>{
       }
     const mealInfo = document.getElementById('mealDetailsInfo');
     mealInfo.innerHTML =`
-        <img src="${meal.strMealThumb}" >
-        <h4>Area: ${meal.strArea}</h4>
-        <h4>Category: ${meal.strCategory}</h4>
+      <div class="singleMealInfo">
+        <div class="thumbnail">
+             <img src="${meal.strMealThumb}" >
+             <p><strong>Instructions: </strong> ${meal.strInstructions}</p>
+        </div>
+        <p><strong>Meal Name:</strong> ${meal.strMeal}</p>
+        <p><strong>Area: </strong> ${meal.strArea}</p>
+        <p><strong>Category:</strong> ${meal.strCategory}</p>
         ${meal.strTags ? `<p><strong>Tags:</strong> ${meal.strTags.split(',').join(', ')}</p>` : ''}
-        <h5>Ingredients:</h5>
-        <ul>
+        <h4>Ingredients:</h4>
+        <ul class="ingredients">
           ${ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
         </ul>
-        <p><strong>Instructions: </strong> ${meal.strInstructions}</p>
+      </div>
     `
     
 }

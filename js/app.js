@@ -4,22 +4,7 @@ fetch('https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood')
     .then(data => {
         data.meals;
     })
-// const displayMeal = meals =>{
-//     meals.forEach(meal => {
-//         const mealsDiv = document.getElementById('mealDetails');
-//         const mealDiv = document.createElement('div');
-//         mealDiv.className = "meal"
-//         const mealInfo =`
-//             <div  onClick="displayMealDetails('${meal.idMeal}')">
-//             <img src="${meal.strMealThumb}">
-//             <h2 class="mealTitle">${meal.strMeal}</h2>
-//             </div>
-//         `
-//         mealDiv.innerHTML = mealInfo;
-//         mealsDiv.appendChild(mealDiv);
-//     });
-// }
-//serach botton
+
 const searchBtn = document.getElementById('search_button');
 searchBtn.addEventListener('click', () => {
     const inputMeal = document.getElementById('meal').value;
@@ -35,7 +20,6 @@ const getWeatherData = strMeal => {
         console.log("not found");
     })
 }
-
 const searchDisplayMeal = meals =>{
     meals.forEach(meal => {
         const mealsDiv = document.getElementById('mealDetails');
@@ -51,9 +35,6 @@ const searchDisplayMeal = meals =>{
         mealsDiv.appendChild(mealDiv);
     });
 }
-
-
-
 const displayMealDetails = idMeal =>{
     const url =`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`
     fetch(url)
@@ -90,12 +71,7 @@ const renderMealDetailsInfo = meal =>{
 }
 
 
-const updateUI = meal => {
-    document.getElementById('mealName').innerHTML = meal.strMeal;
-    // document.getElementById('show_temperature').innerText = data.main.temp;
-    // document.getElementById('weather_status').innerText = data.weather[0].main;
-    document.getElementById('meal').value = ""
-}
+
 
 
 

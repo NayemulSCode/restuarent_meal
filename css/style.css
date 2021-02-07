@@ -1,7 +1,7 @@
 *{
     
  margin: 0;
- padding: 0px;
+ padding: 0;
  box-sizing: border-box;
 }
 
@@ -13,7 +13,6 @@
 
 }
 .meal{
-    border: 1px solid goldenrod;
     border-radius: 10px;
     padding: 10px;
     text-align: center;
@@ -74,11 +73,35 @@ nav ul li{
 }
 nav ul li a{
     color: black;
-    padding: 10px;
+    padding: 5px;
     text-transform: uppercase;
     text-decoration: none;
 }
 nav ul li a:hover, a.active{
     background-color: #3352F2;
     border-radius: 5px;
+}
+@media(max-width:625px){
+    .thumbnail{
+        display: block;
+    }
+    .thumbnail img{
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    #mealDetails{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        grid-gap: 1rem;
+        align-items: center;
+
+    }
+    .meal{
+        border-radius: 10px;
+        padding: 20px;
+        text-align: center;
+        width: 300px;
+        background-color: indianred;
+
+    }
 }

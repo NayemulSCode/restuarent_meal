@@ -26,7 +26,7 @@ const searchDisplayMeal = meals =>{
         const mealDiv = document.createElement('div');
         mealDiv.className = "meal"
         const mealInfo =`
-            <div  onClick="displayMealDetails('${meal.idMeal}')">
+            <div onClick="displayMealDetails('${meal.idMeal}')">
             <img src="${meal.strMealThumb}">
             <h2 class="mealTitle">${meal.strMeal}</h2>
             </div>

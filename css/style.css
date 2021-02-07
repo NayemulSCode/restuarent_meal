@@ -52,3 +52,33 @@
     padding-left: 30px;
     list-style-type: circle;
 }
+/* nav bar */
+nav{
+    height: 50px;
+    width: 100%;
+    padding: 20px 0;
+}
+.container{
+    width: 1200px;
+    max-width: 85%;
+    margin: 0 auto;
+}
+nav ul{
+    display: flex;
+    justify-content: flex-end;
+    margin: 0px 6px;
+}
+nav ul li{
+    list-style-type: none;
+    margin-right: 5px;
+}
+nav ul li a{
+    color: black;
+    padding: 10px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+nav ul li a:hover, a.active{
+    background-color: #3352F2;
+    border-radius: 5px;
+}

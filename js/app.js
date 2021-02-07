@@ -2,15 +2,41 @@
 fetch('https://www.themealdb.com/api/json/v1/1/filter.php?c=Seafood')
     .then(res => res.json())
     .then(data => {
-        displayMeal(data.meals);
+        data.meals;
     })
+// const displayMeal = meals =>{
+//     meals.forEach(meal => {
+//         const mealsDiv = document.getElementById('mealDetails');
+//         const mealDiv = document.createElement('div');
+//         mealDiv.className = "meal"
+//         const mealInfo =`
+//             <div  onClick="displayMealDetails('${meal.idMeal}')">
+//             <img src="${meal.strMealThumb}">
+//             <h2 class="mealTitle">${meal.strMeal}</h2>
+//             </div>
+//         `
+//         mealDiv.innerHTML = mealInfo;
+//         mealsDiv.appendChild(mealDiv);
+//     });
+// }
+//serach botton
+const searchBtn = document.getElementById('search_button');
+searchBtn.addEventListener('click', () => {
+    const inputMeal = document.getElementById('meal').value;
+    getWeatherData(inputMeal);
+    document.getElementById('meal').value = ""
+})
+const getWeatherData = strMeal => {
+    const url = `https://www.themealdb.com/api/json/v1/1/search.php?s=${strMeal}`
+    fetch(url)
+    .then(res => res.json())
+    .then(data => searchDisplayMeal(data.meals))
+    .catch(function(){
+        console.log("not found");
+    })
+}
 
-
-const displayMeal = meals =>{
-    // for (let i = 0; i < meals.length; i++) {
-    //     const meal = meals[i];
-    //     console.log(meal.strMeal)
-    // }
+const searchDisplayMeal = meals =>{
     meals.forEach(meal => {
         const mealsDiv = document.getElementById('mealDetails');
         const mealDiv = document.createElement('div');
@@ -23,20 +49,17 @@ const displayMeal = meals =>{
         `
         mealDiv.innerHTML = mealInfo;
         mealsDiv.appendChild(mealDiv);
-
-        //console.log(meal.strMeal)
     });
 }
 
+
+
 const displayMealDetails = idMeal =>{
     const url =`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${idMeal}`
-    //console.log(url);
     fetch(url)
     .then(res => res.json())
-    //.then(data => console.log(data.meals))
     .then(data => renderMealDetailsInfo(data.meals[0]))
 }
-
 const renderMealDetailsInfo = meal =>{
     const ingredients = [];
     for(let i=1; i<=20; i++) {
@@ -63,9 +86,19 @@ const renderMealDetailsInfo = meal =>{
           ${ingredients.map(ingredient => `<li>${ingredient}</li>`).join('')}
         </ul>
       </div>
-    `
-    
+    ` 
 }
+
+
+const updateUI = meal => {
+    document.getElementById('mealName').innerHTML = meal.strMeal;
+    // document.getElementById('show_temperature').innerText = data.main.temp;
+    // document.getElementById('weather_status').innerText = data.weather[0].main;
+    document.getElementById('meal').value = ""
+}
+
+
+
 
 
 
